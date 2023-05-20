@@ -1,4 +1,4 @@
-# NLW SPACETIME
+# App de linha do tempo
 
   ### Setup do Projeto Back-end
 
