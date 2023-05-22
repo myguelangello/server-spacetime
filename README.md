@@ -2,9 +2,17 @@
 
   ### Setup do Projeto Back-end
 
-  #### Features
+  #### 🧪 Features
     ✅ Node.js
     ✅ Typescript + TSX
     ✅ Fastify (Framework)
     ✅ ESLint
-    ✖ Prisma + SQLite
+    ✅ Prisma + SQLite
+    ✅ CORS
+
+  #### ⚙ CRUD de Memórias
+    ✅ Create
+    ✅ Read
+    ✅ Update
+    ✅ Delete
+
