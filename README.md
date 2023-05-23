@@ -9,7 +9,10 @@
     ✅ ESLint
     ✅ Prisma + SQLite
     ✅ CORS
-    ✖ JWT
+    ✅ JWT
+      - Token de acesso ✅
+      - Autenticação de usuário ✅
+      - Autorização de rotas ✅
 
   #### ⚙ CRUD de Memórias
     ✅ Create

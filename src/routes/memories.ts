@@ -17,6 +17,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
     })
 
     return memories.map((memory) => {
+      // Retorna somente os campos necessários
       return {
         id: memory.id,
         coverUrl: memory.coverUrl,
@@ -27,10 +28,11 @@ export async function memoriesRoutes(app: FastifyInstance) {
 
   app.get('/memories/:id', async (request, reply) => {
     const paramsSchema = z.object({
+      // Valida os parâmetros da requisição
       id: z.string().uuid(),
     })
 
-    const { id } = paramsSchema.parse(request.params)
+    const { id } = paramsSchema.parse(request.params) // Extrai os dados dos parâmetros da requisição
 
     const memory = await prisma.memory.findUniqueOrThrow({
       where: {
@@ -47,15 +49,16 @@ export async function memoriesRoutes(app: FastifyInstance) {
   })
 
   app.post('/memories', async (request) => {
+    // Valida o corpo da requisição
     const bodySchema = z.object({
       content: z.string(),
       coverUrl: z.string(),
       isPublic: z.coerce.boolean().default(false), // coerce converte o valor que vier em isPublic para boolean
     })
-
-    const { content, isPublic, coverUrl } = bodySchema.parse(request.body)
+    const { content, isPublic, coverUrl } = bodySchema.parse(request.body) // Extrai os dados do corpo da requisição
 
     const memory = await prisma.memory.create({
+      // Cria a memória com os dados extraídos
       data: {
         content,
         isPublic,
@@ -69,18 +72,20 @@ export async function memoriesRoutes(app: FastifyInstance) {
 
   app.put('/memories/:id', async (request, reply) => {
     const paramsSchema = z.object({
+      // Valida os parâmetros da requisição
       id: z.string().uuid(),
     })
 
-    const { id } = paramsSchema.parse(request.params)
+    const { id } = paramsSchema.parse(request.params) // Extrai os dados dos parâmetros da requisição
 
     const bodySchema = z.object({
+      // Valida o corpo da requisição
       content: z.string(),
       coverUrl: z.string(),
       isPublic: z.coerce.boolean().default(false), // coerce converte o valor que vier em isPublic para boolean
     })
 
-    const { content, isPublic, coverUrl } = bodySchema.parse(request.body)
+    const { content, isPublic, coverUrl } = bodySchema.parse(request.body) // Extrai os dados do corpo da requisição que serão atualizados
 
     let memory = await prisma.memory.findUniqueOrThrow({
       // Busca a memória pelo id
@@ -111,10 +116,11 @@ export async function memoriesRoutes(app: FastifyInstance) {
 
   app.delete('/memories/:id', async (request, reply) => {
     const paramsSchema = z.object({
+      // Valida os parâmetros da requisição
       id: z.string().uuid(),
     })
 
-    const { id } = paramsSchema.parse(request.params)
+    const { id } = paramsSchema.parse(request.params) // Extrai os dados dos parâmetros da requisição
 
     const memory = await prisma.memory.findUniqueOrThrow({
       // Busca a memória pelo id
