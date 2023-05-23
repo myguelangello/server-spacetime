@@ -19,4 +19,3 @@
     ✅ Read
     ✅ Update
     ✅ Delete
-
