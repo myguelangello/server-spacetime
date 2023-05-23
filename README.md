@@ -9,6 +9,7 @@
     ✅ ESLint
     ✅ Prisma + SQLite
     ✅ CORS
+    ✖ JWT
 
   #### ⚙ CRUD de Memórias
     ✅ Create
