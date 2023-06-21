@@ -6,6 +6,8 @@ import jwt from '@fastify/jwt'
 import { memoriesRoutes } from './routes/memories'
 import { authRoutes } from './routes/auth'
 
+const port = 3333
+const host = process.env.HOST || '192.168.0.10' || 'localhost' // '0.0.0.0', // para dar acesso externo ao mobile
 const app = fastify()
 
 app.register(cors, {
@@ -21,8 +23,9 @@ app.register(memoriesRoutes)
 
 app
   .listen({
-    port: 3333,
+    port,
+    host,
   })
   .then(() => {
-    console.log('🚀 HTTP Server running on http://localhost:3333')
+    console.log(`🚀 HTTP Server running on http://${host}:${port}`)
   })
